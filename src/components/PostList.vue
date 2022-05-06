@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -24,15 +25,12 @@ export default {
   },
   methods: {
     getPosts() {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((res) => {
-          if (!res.ok) {
-            throw Error(res.statusText);
-          }
-          return res.json();
-        })
-        .then((data) => (this.posts = data))
-        .catch(() => (this.errMsg = "error fetching data"));
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts")
+        .then((res) => (this.posts = res.data))
+        .catch((err) =>
+          console.log(err.message)((this.errMsg = "err fetching data"))
+        );
     },
   },
 };
