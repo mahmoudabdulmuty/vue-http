@@ -1,36 +1,49 @@
 <template>
-  <form @submit.prevent="createPost">
-    <label for="title">title</label>
-    <input id="title" type="text" v-model="formData.title" />
-    <label for="body">body</label>
-    <input id="body" type="text" v-model="formData.body" />
-    <label for="userId">userId</label>
-    <input id="userId" type="text" v-model="formData.userId" />
-    <button>Create Post</button>
-  </form>
+  <div>
+    <form @submit.prevent="createPost">
+      <div>
+        <label for="userId">Post User ID</label>
+        <input type="text" id="userId" v-model="formData.userId" />
+      </div>
+      <div>
+        <label for="title">Post Title</label>
+        <input type="text" id="title" v-model="formData.title" />
+      </div>
+      <div>
+        <label for="body">Post Body</label>
+        <input type="text" id="body" v-model="formData.body" />
+      </div>
+      <button>Create Post</button>
+    </form>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
+  name: 'CreatePost',
   data() {
     return {
       formData: {
+        userId: '',
         title: '',
         body: '',
-        userId: '',
       },
-    };
+    }
   },
   methods: {
     createPost() {
       axios
         .post('https://jsonplaceholder.typicode.com/posts', this.formData)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
-};
+}
 </script>
 
 <style scoped>

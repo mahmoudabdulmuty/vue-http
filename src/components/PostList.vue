@@ -1,42 +1,44 @@
 <template>
-  <button @click="getPosts">Load Posts</button>
-  <ul>
-    <li v-if="errMsg">
-      {{ errMsg }}
-    </li>
-    <li v-for="post in posts" :key="post.id">
+  <div>
+    <!-- <button @click="getPosts">Load Posts</button> -->
+    <div v-for="post in posts" :key="post.id">
       <h3>{{ post.id }}. {{ post.title }}</h3>
-      <p>
-        {{ post.body }}
-      </p>
+      <p>{{ post.body }}</p>
       <hr />
-    </li>
-  </ul>
+    </div>
+    <h3 v-if="errorMsg">{{ errorMsg }}</h3>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
+
 export default {
+  name: 'PostList',
+  created() {
+    this.getPosts()
+  },
   data() {
     return {
       posts: [],
-      errMsg: "",
-    };
+      errorMsg: '',
+    }
   },
   methods: {
     getPosts() {
       axios
-        .get("https://jsonplaceholder.typicode.com/posts")
-        .then((res) => (this.posts = res.data))
-        .catch((err) =>
-          console.log(err.message)((this.errMsg = "err fetching data"))
-        );
+        .get('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => {
+          console.log(response)
+          this.posts = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+          this.errorMsg = 'Error retrieving data'
+        })
     },
   },
-  created() {
-    this.getPosts();
-  },
-};
+}
 </script>
 
 <style scoped>

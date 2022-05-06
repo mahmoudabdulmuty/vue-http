@@ -1,12 +1,12 @@
 export default {
   data() {
     return {
-      count: 0,
-    };
+      count: 0
+    }
   },
   methods: {
-    counter() {
-      this.count += 1;
-    },
-  },
-};
+    incrementCount() {
+      this.count += 1
+    }
+  }
+}
