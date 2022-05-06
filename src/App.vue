@@ -1,15 +1,14 @@
 <template>
-  <h1>vue-http</h1>
-  <!-- <create-post /> -->
-  <!-- <post-list /> -->
-  <template-ref />
+  <button @click="counter"> counter clicked
+    {{ count }} times
+  </button>
 </template>
 
 <script>
-import TemplateRef from "./components/TemplateRef.vue";
+import CounterMixin from './mixins/counter';
 export default {
   name: "App",
-  components: { TemplateRef },
+  mixins: [CounterMixin]
 };
 </script>
 
