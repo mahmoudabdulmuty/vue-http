@@ -11,23 +11,23 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
   data() {
     return {
       formData: {
-        title: "",
-        body: "",
-        userId: "",
+        title: '',
+        body: '',
+        userId: '',
       },
     };
   },
   methods: {
     createPost() {
       axios
-        .post("https://jsonplaceholder.typicode.com/posts", this.formData)
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
+        .post('https://jsonplaceholder.typicode.com/posts', this.formData)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
     },
   },
 };

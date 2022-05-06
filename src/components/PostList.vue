@@ -33,6 +33,9 @@ export default {
         );
     },
   },
+  created() {
+    this.getPosts();
+  },
 };
 </script>
 
