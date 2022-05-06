@@ -1,15 +1,15 @@
 <template>
   <h1>vue-http</h1>
-  <create-post />
-  <post-list />
+  <!-- <create-post /> -->
+  <!-- <post-list /> -->
+  <template-ref />
 </template>
 
 <script>
-import CreatePost from "./components/CreatePost.vue";
-import PostList from "./components/PostList.vue";
+import TemplateRef from "./components/TemplateRef.vue";
 export default {
   name: "App",
-  components: { PostList, CreatePost },
+  components: { TemplateRef },
 };
 </script>
 
